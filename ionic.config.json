@@ -2,5 +2,7 @@
   "name": "IonicOpenAnnuaire",
   "app_id": "dcaf2e8f",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
