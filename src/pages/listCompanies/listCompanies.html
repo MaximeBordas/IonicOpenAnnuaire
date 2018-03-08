@@ -1,10 +1,21 @@
-<page-navbar></page-navbar>
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="ios-menu-outline"></ion-icon>
+    </button>
+    <ion-title>Liste des entreprises</ion-title>
+  </ion-navbar>
+</ion-header>
 
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let company of companies">
+      {{ company.name }}
+      <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+    </button>
+  </ion-list>
 
-<ion-content padding>
-  <h2>My big LIST!</h2>
-  <p>
-    SALUT LES BROS ICI çA VA ETRE LA LIST
-  </p>
-
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
