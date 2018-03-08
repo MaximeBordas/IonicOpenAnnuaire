@@ -1,3 +1,27 @@
-page-list{
+@import "../../theme/color";
 
+.list {
+  .item {
+    padding-left: 0;
+
+    .item-inner {
+      padding-left: 16px;
+
+      .label-md {
+        margin: 13px 25px 13px 0;
+      }
+
+      .item-icon {
+        position: absolute;
+        right: 16px;
+        font-size: 24px;
+        color: $grey;
+      }
+    }
+  }
+  button {
+    &.item-ios:not([detail-none]) .item-inner {
+      background: none;
+    }
+  }
 }
