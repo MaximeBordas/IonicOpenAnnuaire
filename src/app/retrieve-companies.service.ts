@@ -46,7 +46,7 @@ export class RetrieveCompaniesService {
   }
 
   getCompanies() {
-    this.createLoader();
+    this.customLoader();
     return this.http.get(this.url, {
       params: {
         dataset: RetrieveCompaniesService.DATASET,
@@ -91,10 +91,10 @@ export class RetrieveCompaniesService {
     this.dispatchEvents();
   }
 
-  createLoader(): void {
+  customLoader(): void {
     this.loading = this.loadingCtrl.create({
-      spinner: 'dots',
-      content: 'Chargement en cours...',
+      spinner: 'crescent',
+      content: 'La liste charge !',
     });
     this.loading.present();
   }
