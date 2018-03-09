@@ -6,22 +6,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagInputModule } from 'ngx-chips';
 import { HttpClientModule } from '@angular/common/http';
 
-
-
-
 import  { exportCompanies } from '../pages/exportCompanies/exportCompanies';
 import  { listCompanies } from '../pages/listCompanies/listCompanies';
 import  { mapCompanies } from '../pages/mapCompanies/mapCompanies';
 import { navbar } from "../pages/navbar/navbar";
-import { RetrieveCompaniesService } from './retrieve-companies.service';
+import { sideMenu } from '../pages/sideMenu/sideMenu';
+import { FiltersPage } from '../pages/filters/filters';
 import { TabsPage } from '../pages/tabs/tabs';
 
-
+import { RetrieveCompaniesService } from './retrieve-companies.service';
+import {QueryBuilderService} from "./query-builder.service";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {QueryBuilderService} from "./query-builder.service";
 
+import localeFr from '@angular/common/locales/fr';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     MyApp,
@@ -30,6 +32,8 @@ import {QueryBuilderService} from "./query-builder.service";
     listCompanies,
     mapCompanies,
     navbar,
+    sideMenu,
+    FiltersPage,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,8 @@ import {QueryBuilderService} from "./query-builder.service";
     listCompanies,
     mapCompanies,
     navbar,
+    sideMenu,
+    FiltersPage,
   ],
   providers: [
     RetrieveCompaniesService,
