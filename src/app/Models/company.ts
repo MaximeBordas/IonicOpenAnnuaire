@@ -22,18 +22,4 @@ export class Company {
     this.startDate = startDate;
     this.coordonnees = coordonnees;
   }
-
-  getExportData() {
-    return {
-      siren: this.siren,
-      name: this.name,
-      address: this.address,
-      postal_code: this.postal_code,
-      city: this.city,
-      category: this.category,
-      activity: this.activity,
-      effectif: this.effectif,
-      startDate: this.startDate,
-    }
-  }
 }
