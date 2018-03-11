@@ -1,0 +1,48 @@
+page-filters {
+  #hide {
+    display: none;
+  }
+  #show {
+    display: block;
+  }
+
+  tag-input {
+    tag {
+      display: none !important;
+    }
+  }
+
+  .tags {
+    margin-top: 10px;
+
+    .tag {
+      background-color: transparent !important;
+      padding: 0;
+      width: 100%;
+      max-width: 170px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-weight: 500;
+      margin-bottom: 5px;
+
+      ion-icon {
+        font-weight: bold;
+        font-size: 24px;
+        margin-left: 0;
+        padding-right: 10px;
+        position: absolute;
+        left: 17px;
+      }
+
+      .filter {
+        margin-left: 20px;
+        margin-top: 3px;
+      }
+    }
+  }
+}
+
+ng2-menu-item {
+  font-size: 16px;
+}

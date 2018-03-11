@@ -1,0 +1,213 @@
+<ion-menu type="overlay" [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        {{ totalCompanies| number:'':'fr' }}
+        <span *ngIf="totalCompanies > 1">résultats</span>
+        <span *ngIf="totalCompanies <= 1">résultat</span>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <div class="sidebar-categ categ-activity">
+        <div class="sidebar-categ-title">
+          <div>
+            <ion-icon name="ios-git-network-outline"></ion-icon>
+            Activité (code APE)
+          </div>
+          <button id="activity" class="categ-activity-button" (click)="toggleFilter('ape', !hideApe)">
+            <ion-icon *ngIf="hideApe === true" name="ios-add-circle"></ion-icon>
+            <ion-icon *ngIf="hideApe === false" name="ios-remove-circle"></ion-icon>
+          </button>
+        </div>
+        <div class="sidebar-categ-filter">
+          <page-filters paramName="apen700" paramLabel="Code APE" [display]="hideApe" #ape></page-filters>
+          <div class="count-cards" [id]="hideApe ? 'hide' : 'show'">
+            <div class="categ-activity-button-count" *ngFor="let value of ape.filter.values">
+              {{ retrieveCountFacetByFilterAndValue(ape.paramName, value)| number:'':'fr' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-categ categ-type">
+        <div class="sidebar-categ-title">
+          <div>
+            <ion-icon name="ios-arrow-dropup-outline"></ion-icon>
+            Catégories d'entreprises
+          </div>
+          <button id="type" class="categ-type-button" (click)="toggleFilter('categories', !hideCategories)">
+            <ion-icon *ngIf="hideCategories === true" name="ios-add-circle"></ion-icon>
+            <ion-icon *ngIf="hideCategories === false" name="ios-remove-circle"></ion-icon>
+          </button>
+        </div>
+        <div class="sidebar-categ-filter">
+          <page-filters paramName="categorie" paramLabel="Catégories d'entreprises" type="selectObject"
+                        optionIndex="categories" [display]="hideCategories" #categories>
+          </page-filters>
+          <div class="count-cards" [id]="hideCategories ? 'hide' : 'show'">
+            <div class="categ-type-button-count" *ngFor="let value of categories.filter.values">
+              {{ retrieveCountFacetByFilterAndValue(categories.paramName, value)| number:'':'fr' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-categ categ-county">
+        <div class="sidebar-categ-title">
+          <div>
+            <ion-icon name="ios-map-outline"></ion-icon>
+            Département
+          </div>
+          <button id="county" class="categ-county-button" (click)="toggleFilter('county', !hideCounty)">
+            <ion-icon *ngIf="hideCounty === true" name="ios-add-circle"></ion-icon>
+            <ion-icon *ngIf="hideCounty === false" name="ios-remove-circle"></ion-icon>
+          </button>
+        </div>
+        <div class="sidebar-categ-filter">
+          <page-filters paramName="du" paramLabel="Département" type="selectObject" optionIndex="county"
+                        [display]="hideCounty" #county>
+          </page-filters>
+          <div class="count-cards" [id]="hideCounty ? 'hide' : 'show'">
+            <div class="categ-county-button-count" *ngFor="let value of county.filter.values">
+              {{ retrieveCountFacetByFilterAndValue(county.paramName, value)| number:'':'fr' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-categ categ-city">
+        <div class="sidebar-categ-title">
+          <div>
+            <ion-icon name="ios-locate-outline"></ion-icon>
+            Commune
+          </div>
+          <button id="city" class="categ-city-button" (click)="toggleFilter('city', !hideCity)">
+            <ion-icon *ngIf="hideCity === true" name="ios-add-circle"></ion-icon>
+            <ion-icon *ngIf="hideCity === false" name="ios-remove-circle"></ion-icon>
+          </button>
+        </div>
+        <div class="sidebar-categ-filter">
+          <page-filters paramName="libcom" paramLabel="Commune" optionIndex="cities" type="selectObject"
+                        [display]="hideCity" #city>
+          </page-filters>
+          <div class="count-cards" [id]="hideCity ? 'hide' : 'show'">
+            <div class="categ-city-button-count" *ngFor="let value of city.filter.values">
+              {{ retrieveCountFacetByFilterAndValue(city.paramName, value)| number:'':'fr' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-categ categ-creation">
+        <div class="sidebar-categ-title">
+          <div>
+            <ion-icon name="ios-calendar-outline"></ion-icon>
+            Année de création
+          </div>
+          <button id="creation" class="categ-creation-button" (click)="toggleFilter('creation', !hideCreation)">
+            <ion-icon *ngIf="hideCreation === true" name="ios-add-circle"></ion-icon>
+            <ion-icon *ngIf="hideCreation === false" name="ios-remove-circle"></ion-icon>
+          </button>
+        </div>
+        <div class="sidebar-categ-filter">
+          <page-filters paramName="dcret" paramLabel="Année de création" [display]="hideCreation" #creation></page-filters>
+          <div class="count-cards" [id]="hideCreation ? 'hide' : 'show'">
+            <div class="categ-creation-button-count" *ngFor="let value of creation.filter.values">
+              {{ retrieveCountFacetByFilterAndValue(creation.paramName, value)| number:'':'fr' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-categ categ-legal">
+        <div class="sidebar-categ-title">
+          <div>
+            <ion-icon name="ios-bookmark-outline"></ion-icon>
+            Statut juridique
+          </div>
+          <button id="legal" class="categ-legal-button" (click)="toggleFilter('legal', !hideLegal)">
+            <ion-icon *ngIf="hideLegal === true" name="ios-add-circle"></ion-icon>
+            <ion-icon *ngIf="hideLegal === false" name="ios-remove-circle"></ion-icon>
+          </button>
+        </div>
+        <div class="sidebar-categ-filter">
+          <page-filters paramName="nj" paramLabel="Statut juridique" optionIndex="legalStatus"
+                        type="selectObject" [display]="hideLegal" #legal>
+          </page-filters>
+          <div class="count-cards" [id]="hideLegal ? 'hide' : 'show'">
+            <div class="categ-legal-button-count" *ngFor="let value of legal.filter.values">
+              {{ retrieveCountFacetByFilterAndValue(legal.paramName, value)| number:'':'fr' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-categ categ-effectives">
+        <div class="sidebar-categ-title">
+          <div>
+            <ion-icon name="ios-people-outline"></ion-icon>
+            Effectifs
+          </div>
+          <button id="effectives" class="categ-effectives-button" (click)="toggleFilter('effectives', !hideEffectives)">
+            <ion-icon *ngIf="hideEffectives === true" name="ios-add-circle"></ion-icon>
+            <ion-icon *ngIf="hideEffectives === false" name="ios-remove-circle"></ion-icon>
+          </button>
+        </div>
+        <div class="sidebar-categ-filter">
+          <page-filters paramName="tefet" paramLabel="Effectifs" optionIndex="effective" type="selectObject"
+                        [display]="hideEffectives" #effectives>
+          </page-filters>
+          <div class="count-cards" [id]="hideEffectives ? 'hide' : 'show'">
+            <div class="categ-effectives-button-count" *ngFor="let value of effectives.filter.values">
+              {{ retrieveCountFacetByFilterAndValue(effectives.paramName, value)| number:'':'fr' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-categ categ-revenues">
+        <div class="sidebar-categ-title">
+          <div>
+            <ion-icon name="ios-barcode-outline"></ion-icon>
+            Chiffre d'affaires
+          </div>
+          <button id="revenues" class="categ-revenues-button" (click)="toggleFilter('revenues', !hideRevenues)">
+            <ion-icon *ngIf="hideRevenues === true" name="ios-add-circle"></ion-icon>
+            <ion-icon *ngIf="hideRevenues === false" name="ios-remove-circle"></ion-icon>
+          </button>
+        </div>
+        <div class="sidebar-categ-filter">
+          <page-filters paramName="tca" paramLabel="Chiffre d'affaires" optionIndex="turnover"
+                        type="selectObject" [display]="hideRevenues" #revenues>
+          </page-filters>
+          <div class="count-cards" [id]="hideRevenues ? 'hide' : 'show'">
+            <div class="categ-revenues-button-count" *ngFor="let value of revenues.filter.values">
+              {{ retrieveCountFacetByFilterAndValue(revenues.paramName, value)| number:'':'fr' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-categ categ-postal">
+        <div class="sidebar-categ-title">
+          <div>
+            <ion-icon name="ios-navigate-outline"></ion-icon>
+            Code Postal
+          </div>
+          <button id="postal" class="categ-postal-button" (click)="toggleFilter('postal', !hidePostal)">
+            <ion-icon *ngIf="hidePostal === true" name="ios-add-circle"></ion-icon>
+            <ion-icon *ngIf="hidePostal === false" name="ios-remove-circle"></ion-icon>
+          </button>
+        </div>
+        <div class="sidebar-categ-filter">
+          <page-filters paramName="codpos" paramLabel="Code postal" [display]="hidePostal" #postal></page-filters>
+          <div class="count-cards" [id]="hidePostal ? 'hide' : 'show'">
+            <div class="categ-postal-button-count" *ngFor="let value of postal.filter.values">
+              {{ retrieveCountFacetByFilterAndValue(postal.paramName, value)| number:'':'fr' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-categ-desc">
+        <p>Ajoutez et cumulez les critères de recherche pour affiner votre recherche :</p>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

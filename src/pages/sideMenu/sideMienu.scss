@@ -1,0 +1,286 @@
+@import "../../theme/color";
+
+.menu-inner {
+  .toolbar, .toolbar-ios ion-title {
+    padding: 0;
+
+    .toolbar-title {
+      overflow: initial;
+      text-align: center;
+    }
+  }
+
+  .scroll-content {
+    overflow-y: auto;
+
+    ion-list {
+      display: flex;
+      flex-direction: column;
+
+      .sidebar-categ {
+        padding: 10px;
+        border-bottom: 2px solid $grey;
+
+        &-title {
+          color: $sidebar-content-grey;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: 700;
+
+          div {
+            font-size: 15px;
+
+            .icon {
+              font-size: 20px;
+            }
+          }
+
+          button {
+            background-color: transparent;
+            font-size: 20px;
+          }
+        }
+
+        &-filter {
+          display: flex;
+        }
+
+        &-desc {
+          padding: 10px 20px;
+          flex: 0 0 10%;
+          color: $sidebar-content-grey;
+
+          p {
+            margin: 0;
+          }
+        }
+
+        .count-cards {
+          margin-left: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+      }
+      .categ {
+        &-activity {
+          border-left: 6px solid $first-gradient;
+
+          .ng2-tag-input--focused {
+            border-bottom: 2px solid $first-gradient;
+          }
+
+          &-button {
+            color: $sidebar-content-grey;
+
+            &:hover {
+              color: $first-gradient
+            }
+
+            &-count {
+              color: $white;
+              border: 1px solid $first-gradient;
+              background-color: $first-gradient;
+              border-radius: 15px;
+              padding: 0 10px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+        &-type {
+          border-left: 6px solid $second-gradient;
+
+          .ng2-tag-input--focused {
+            border-bottom: 2px solid $second-gradient;
+          }
+
+          &-button {
+            color: $sidebar-content-grey;
+
+            &:hover {
+              color: $second-gradient;
+            }
+
+            &-count {
+              color: $white;
+              border: 1px solid $second-gradient;
+              background-color: $second-gradient;
+              border-radius: 15px;
+              padding: 0 10px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+        &-county {
+          border-left: 6px solid $third-gradient;
+
+          .ng2-tag-input--focused {
+            border-bottom: 2px solid $third-gradient;
+          }
+
+          &-button {
+            color: $sidebar-content-grey;
+
+            &:hover {
+              color: $third-gradient;
+            }
+
+            &-count {
+              color: $white;
+              border: 1px solid $third-gradient;
+              background-color: $third-gradient;
+              border-radius: 15px;
+              padding: 0 10px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+        &-city {
+          border-left: 6px solid $fourth-gradient;
+
+          .ng2-tag-input--focused {
+            border-bottom: 2px solid $fourth-gradient;
+          }
+
+          &-button {
+            color: $sidebar-content-grey;
+
+            &:hover {
+              color: $fourth-gradient;
+            }
+
+            &-count {
+              color: $white;
+              border: 1px solid $fourth-gradient;
+              background-color: $fourth-gradient;
+              border-radius: 15px;
+              padding: 0 10px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+        &-creation {
+          border-left: 6px solid $fifth-gradient;
+
+          .ng2-tag-input--focused {
+            border-bottom: 2px solid $fifth-gradient;
+          }
+
+          &-button {
+            color: $sidebar-content-grey;
+
+            &:hover {
+              color: $fifth-gradient;
+            }
+
+            &-count {
+              color: $white;
+              border: 1px solid $fifth-gradient;
+              background-color: $fifth-gradient;
+              border-radius: 15px;
+              padding: 0 10px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+        &-legal {
+          border-left: 6px solid $sixth-gradient;
+
+          .ng2-tag-input--focused {
+            border-bottom: 2px solid $sixth-gradient;
+          }
+
+          &-button {
+            color: $sidebar-content-grey;
+
+            &:hover {
+              color: $sixth-gradient;
+            }
+
+            &-count {
+              color: $white;
+              border: 1px solid $sixth-gradient;
+              background-color: $sixth-gradient;
+              border-radius: 15px;
+              padding: 0 10px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+        &-effectives {
+          border-left: 6px solid $seventh-gradient;
+
+          .ng2-tag-input--focused {
+            border-bottom: 2px solid $seventh-gradient;
+          }
+
+          &-button {
+            color: $sidebar-content-grey;
+
+            &:hover {
+              color: $seventh-gradient;
+            }
+
+            &-count {
+              color: $white;
+              border: 1px solid $seventh-gradient;
+              background-color: $seventh-gradient;
+              border-radius: 15px;
+              padding: 0 10px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+        &-revenues {
+          border-left: 6px solid $eigth-gradient;
+
+          .ng2-tag-input--focused {
+            border-bottom: 2px solid $eigth-gradient;
+          }
+
+          &-button {
+            color: $sidebar-content-grey;
+
+            &:hover {
+              color: $eigth-gradient;
+            }
+
+            &-count {
+              color: $white;
+              border: 1px solid $eigth-gradient;
+              background-color: $eigth-gradient;
+              border-radius: 15px;
+              padding: 0 10px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+        &-postal {
+          border-left: 6px solid $nineth-gradient;
+
+          .ng2-tag-input--focused {
+            border-bottom: 2px solid $nineth-gradient;
+          }
+
+          &-button {
+            color: $sidebar-content-grey;
+
+            &:hover {
+              color: $nineth-gradient;
+            }
+
+            &-count {
+              color: $white;
+              border: 1px solid $nineth-gradient;
+              background-color: $nineth-gradient;
+              border-radius: 15px;
+              padding: 0 10px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
