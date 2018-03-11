@@ -13,8 +13,6 @@ export class mapCompanies implements OnInit {
   @ViewChild('mapCompanies') mapRef: ElementRef;
   companies: Company[];
   alreadyFiltered = false;
-  style = [];
-
   style = mapStyle;
 
 
