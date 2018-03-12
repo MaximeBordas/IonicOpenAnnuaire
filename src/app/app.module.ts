@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import  { exportCompanies } from '../pages/exportCompanies/exportCompanies';
 import  { listCompanies } from '../pages/listCompanies/listCompanies';
+import  {DetailCompanies } from "../pages/detailCompanies/detailCompanies";
 import  { mapCompanies } from '../pages/mapCompanies/mapCompanies';
 import  { sideMenu } from '../pages/sideMenu/sideMenu';
 import  { FiltersPage } from '../pages/filters/filters';
@@ -29,6 +30,7 @@ registerLocaleData(localeFr, 'fr');
     TabsPage,
     exportCompanies,
     listCompanies,
+    DetailCompanies,
     mapCompanies,
     sideMenu,
     FiltersPage,
@@ -46,6 +48,7 @@ registerLocaleData(localeFr, 'fr');
     TabsPage,
     exportCompanies,
     listCompanies,
+    DetailCompanies,
     mapCompanies,
     sideMenu,
     FiltersPage,

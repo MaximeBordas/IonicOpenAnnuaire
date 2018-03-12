@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> L'entrise est : {{company.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-content class="detailCompanies">
+      <ion-icon name="ios-contact"></ion-icon> Nom: <ion-badge class="name">{{ company.name }}</ion-badge>
+      <br>
+      <ion-icon name="ios-bookmark"></ion-icon> Siren: <ion-badge class="siren">{{ company.siren }}</ion-badge>
+      <br>
+      <ion-icon name="ios-map"></ion-icon> Adresse: <ion-badge class="adress">{{ company.address }}</ion-badge>
+      <br>
+      <ion-icon name="ios-navigate"></ion-icon> Code postal: <ion-badge class="postalcode">{{ company.postal_code }}</ion-badge>
+      <br>
+      <ion-icon name="ios-pin"></ion-icon> Ville: <ion-badge class="city">{{ company.city }}</ion-badge>
+      <br>
+      <ion-icon name="ios-clipboard-outline"></ion-icon> Catégorie: <ion-badge class="category">{{ company.category }}</ion-badge>
+      <br>
+      <ion-icon name="ios-git-network"></ion-icon> Activité: <ion-badge class="activity">{{ company.activity }}</ion-badge>
+      <br>
+      <ion-icon name="ios-people"></ion-icon> Effectif: <ion-badge class="effectif">{{ company.effectif }}</ion-badge>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

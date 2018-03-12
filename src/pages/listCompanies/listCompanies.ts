@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RetrieveCompaniesService } from '../../app/retrieve-companies.service';
 import { Company } from '../../app/Models/company';
+import { DetailCompanies} from "../detailCompanies/detailCompanies";
 
 @Component({
   selector: 'page-list',
@@ -16,7 +17,6 @@ export class listCompanies implements OnInit {
       (companies: Company[]) => this.companies = companies
     );
   }
-
   ngOnInit(): void {
     this.retrieveCompaniesService.getCompanies();
   }
@@ -26,5 +26,8 @@ export class listCompanies implements OnInit {
       this.retrieveCompaniesService.loadNextCompanies();
       infiniteScroll.complete();
     }, 700);
+  }
+  openDetails(company: Company){
+    this.navCtrl.push(DetailCompanies,company);
   }
 }
