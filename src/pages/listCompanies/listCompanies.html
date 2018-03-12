@@ -8,8 +8,9 @@
 </ion-header>
 
 <ion-content>
+  <page-filters paramName="name" paramlabel="Recherche" [multiple]="false" [needName]="false"></page-filters>
   <ion-list>
-    <button ion-item *ngFor="let company of companies">
+    <button ion-item *ngFor="let company of companies" (click)="openDetails(company)">
       {{ company.name }}
       <ion-icon name="ios-arrow-forward-outline"></ion-icon>
     </button>

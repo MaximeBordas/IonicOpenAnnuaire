@@ -1,16 +1,12 @@
-<!-- Input classique -->
 <div *ngIf="type === 'text'">
   <ion-searchbar #single_input placeholder="Nom de l'entreprise, n° de SIRET, activité..." *ngIf="!multiple"
                  (change)="addFilter(single_input.value)" (ionClear)="removeFilter(single_input.value)">
   </ion-searchbar>
 </div>
-
-<!-- Input multiple -->
 <div *ngIf="multiple && type === 'text'">
   <tag-input [(ngModel)]="items" [separatorKeyCodes]="[32,188]" [placeholder]="paramLabel" #input
              [id]="display ? 'hide' : 'show'" [secondaryPlaceholder]="paramLabel" (onAdd)="addFilter($event)">
   </tag-input>
-
   <div class="tags" *ngIf="0 !== filter.values.length">
     <div *ngFor="let filter of filter.values">
       <div class="tag">
@@ -20,8 +16,6 @@
     </div>
   </div>
 </div>
-
-<!-- Select -->
 <div *ngIf="multiple && type === 'selectObject'">
   <tag-input [(ngModel)]="items" [placeholder]="paramLabel" [secondaryPlaceholder]="paramLabel" #select
              (onAdd)="addFilter($event)" [id]="display ? 'hide' : 'show'" [onlyFromAutocomplete]="true">

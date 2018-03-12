@@ -5,6 +5,8 @@ import { ApiInterface } from './Models/api-interface';
 import { CompanyInterface } from './Models/company-interface';
 import { Company } from './Models/company';
 import { Loading, LoadingController } from 'ionic-angular';
+import {QueryBuilderService} from "./query-builder.service";
+import  {Filter} from "./Models/filter";
 
 @Injectable()
 export class RetrieveCompaniesService {
@@ -25,10 +27,16 @@ export class RetrieveCompaniesService {
   nhits: number = 0;
   rows: number = 100;
   loading: Loading;
+  filters: Filter[] = [];
   facets: string[] = [];
   facetGroups = {};
 
-  constructor(private http: HttpClient,  public loadingCtrl: LoadingController) {
+  constructor(private http: HttpClient,private query : QueryBuilderService,  public loadingCtrl: LoadingController) {
+    this.filterCompanies.subscribe((filter: Filter) => {
+      if (!this.filters.some(x => x === filter)) {
+        this.filters.push(filter);
+      }
+    });
 
     this.facetCompanies.subscribe((facet: string) => {
       if (!this.facets.some(x => x === facet)) {
@@ -54,6 +62,7 @@ export class RetrieveCompaniesService {
         rows: this.rows.toString(),
         facet: this.facets,
         start: this.start.toString(),
+        q: this.query.queryBuilder(this.filters),
       },
     }).map(
       (res) => res as ApiInterface).subscribe(
