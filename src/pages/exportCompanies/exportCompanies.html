@@ -7,9 +7,30 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <h2>My big Export!</h2>
-  <p>
-    SALUT LES BROS ICI çA VA ETRE L'EXPORT
-  </p>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-list>
+            <button ion-item (click)="downLoadAPI('CSV')">
+              <ion-icon name="ios-cloud-download" item-start></ion-icon>Tout le jeu de données | CSV
+            </button>
+            <button ion-item (click)="downLoadAPI('JSON')">
+              <ion-icon name="ios-cloud-download" item-start></ion-icon>Tout le jeu de données | Json
+            </button>
+            <button ion-item (click)="downLoadAPI('XLS')">
+              <ion-icon name="ios-cloud-download" item-start></ion-icon>Tout le jeu de données | XLS
+            </button>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <p>Il faut savoir que l'export ne fonctionne pas sur mobile. Veuillez le faire sur une plateforme Web.</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

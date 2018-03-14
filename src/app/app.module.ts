@@ -22,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+import {InAppBrowser} from "@ionic-native/in-app-browser";
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -58,6 +59,7 @@ registerLocaleData(localeFr, 'fr');
     QueryBuilderService,
     StatusBar,
     SplashScreen,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
