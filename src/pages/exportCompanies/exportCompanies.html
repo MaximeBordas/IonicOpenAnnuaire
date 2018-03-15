@@ -11,14 +11,18 @@
     <ion-row>
       <ion-col>
         <ion-card>
+          <ion-card-header>
+            Export Mobile
+          </ion-card-header>
+
           <ion-list>
-            <button ion-item (click)="downLoadAPI('CSV')">
+            <button ion-item (click)="DownloadAll('CSV')">
               <ion-icon name="ios-cloud-download" item-start></ion-icon>Tout le jeu de données | CSV
             </button>
-            <button ion-item (click)="downLoadAPI('JSON')">
+            <button ion-item (click)="DownloadAll('JSON')">
               <ion-icon name="ios-cloud-download" item-start></ion-icon>Tout le jeu de données | Json
             </button>
-            <button ion-item (click)="downLoadAPI('XLS')">
+            <button ion-item (click)="DownloadAll('XLS')">
               <ion-icon name="ios-cloud-download" item-start></ion-icon>Tout le jeu de données | XLS
             </button>
           </ion-list>
@@ -26,9 +30,20 @@
       </ion-col>
       <ion-col>
         <ion-card>
-          <ion-card-content>
-            <p>Il faut savoir que l'export ne fonctionne pas sur mobile. Veuillez le faire sur une plateforme Web.</p>
-          </ion-card-content>
+          <ion-card-header>
+            Export Web
+          </ion-card-header>
+          <ion-list>
+            <button ion-item (click)="downLoadAPI('CSV')">
+              <ion-icon name="ios-cloud-download-outline" item-start></ion-icon>Tout le jeu de données | CSV
+            </button>
+            <button ion-item (click)="downLoadAPI('JSON')">
+              <ion-icon name="ios-cloud-download-outline" item-start></ion-icon>Tout le jeu de données | Json
+            </button>
+            <button ion-item (click)="downLoadAPI('XLS')">
+              <ion-icon name="ios-cloud-download-outline" item-start></ion-icon>Tout le jeu de données | XLS
+            </button>
+          </ion-list>
         </ion-card>
       </ion-col>
     </ion-row>
