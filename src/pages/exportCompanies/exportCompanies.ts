@@ -38,9 +38,13 @@ export class exportCompanies {
 
     const fileTransfert: TransferObject = this.transfer.create();
 
+    let csv = encodeURI('https://public.opendatasoft.com/explore/dataset/sirene/download/?format=csv&use_labels_for_header=true');
+    let json = encodeURI('https://public.opendatasoft.com/explore/dataset/sirene/download/?format=json&use_labels_for_header=true');
+    let xls = encodeURI('https://public.opendatasoft.com/explore/dataset/sirene/download/?format=xls&use_labels_for_header=true');
+
     switch (format){
       case 'CSV':
-        fileTransfert.download(this.CSV,this.path).then((entry) => {
+        fileTransfert.download(csv,this.path+ 'siren.csv').then((entry) => {
             const alertSuccess = this.alertCtrl.create({
               title: `Fichier ${format} téléchargé.`,
               subTitle: `Le fichier .${format} à bien été téléchargé dans le path : ${entry.toURL()}`,
@@ -61,7 +65,7 @@ export class exportCompanies {
 
         break;
         case 'JSON':
-          fileTransfert.download(this.JSON,this.path).then((entry) => {
+          fileTransfert.download(json,this.path + 'siren.json').then((entry) => {
           const alertSuccess = this.alertCtrl.create({
             title: `Fichier ${format} téléchargé.`,
             subTitle: `Le fichier .${format} à bien été téléchargé dans le path : ${entry.toURL()}`,
@@ -81,7 +85,7 @@ export class exportCompanies {
         });
           break;
         case 'XLS':
-          fileTransfert.download(this.XLS,this.path).then((entry) => {
+          fileTransfert.download(xls,this.path + 'siren.xls').then((entry) => {
           const alertSuccess = this.alertCtrl.create({
             title: `Fichier ${format} téléchargé.`,
             subTitle: `Le fichier .${format} à bien été téléchargé dans le path : ${entry.toURL()}`,
