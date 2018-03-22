@@ -14,7 +14,7 @@ export class mapCompanies implements OnInit {
   companies: Company[];
   alreadyFiltered = false;
   style = mapStyle;
-
+  currentModal  = null;
 
   constructor(private retrieveCompaniesService: RetrieveCompaniesService) {
     this.retrieveCompaniesService.filterCompanies.subscribe(
@@ -44,12 +44,16 @@ export class mapCompanies implements OnInit {
 
     this.companies.forEach((company: Company) => {
       if (undefined !== company.coordonnees) {
-        let latLng = new google.maps.LatLng(company.coordonnees[0], company.coordonnees[1]);
-        let content = "Nom : " + company.name + "<hr>Adresse : " + company.address + "<br>Code postal : " + company.postal_code + "<br>Ville de l'entreprise : " + company.city;
-        let infoWindow = this.infoWindow(content);
-        let marker = this.addMarker(latLng, map, company.name);
+        const latLng = new google.maps.LatLng(company.coordonnees[0], company.coordonnees[1]);
+        const content = "Nom : " + company.name + "<hr>Adresse : " + company.address + "<br>Code postal : " + company.postal_code + "<br>Ville de l'entreprise : " + company.city;
+        const infoWindow = this.infoWindow(content);
+        const marker = this.addMarker(latLng, map, company.name);
 
-        marker.addListener('click', function () {
+        marker.addListener('click', () => {
+          if (this.currentModal !== null) {
+            this.currentModal.close();
+          }
+          this.currentModal = infoWindow;
           infoWindow.open(map, marker);
         });
       }

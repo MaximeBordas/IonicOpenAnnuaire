@@ -4,9 +4,10 @@ import 'rxjs/add/operator/map';
 import { ApiInterface } from './Models/api-interface';
 import { CompanyInterface } from './Models/company-interface';
 import { Company } from './Models/company';
-import { Loading, LoadingController } from 'ionic-angular';
+import { Loading, LoadingController,AlertController } from 'ionic-angular';
 import {QueryBuilderService} from "./query-builder.service";
 import  {Filter} from "./Models/filter";
+import { Network } from '@ionic-native/network';
 
 @Injectable()
 export class RetrieveCompaniesService {
@@ -30,8 +31,9 @@ export class RetrieveCompaniesService {
   filters: Filter[] = [];
   facets: string[] = [];
   facetGroups = {};
+  isConnect  = navigator.onLine;
 
-  constructor(private http: HttpClient,private query : QueryBuilderService,  public loadingCtrl: LoadingController) {
+  constructor(private http: HttpClient,private query : QueryBuilderService,  public loadingCtrl: LoadingController,private alertCrtl: AlertController,private network: Network) {
     this.filterCompanies.subscribe((filter: Filter) => {
       if (!this.filters.some(x => x === filter)) {
         this.filters.push(filter);
@@ -54,39 +56,48 @@ export class RetrieveCompaniesService {
   }
 
   getCompanies() {
-    this.customLoader();
-    return this.http.get(this.url, {
-      params: {
-        dataset: RetrieveCompaniesService.DATASET,
-        lang: RetrieveCompaniesService.LANG,
-        rows: this.rows.toString(),
-        facet: this.facets,
-        start: this.start.toString(),
-        q: this.query.queryBuilder(this.filters),
-      },
-    }).map(
-      (res) => res as ApiInterface).subscribe(
-      (response: ApiInterface) => {
-        this.nhits = response.nhits;
-        this.facetGroups = response.facet_groups;
-        response.records.forEach((record: CompanyInterface) => {
-          this.companies.push(new Company(
-            record.fields.siren,
-            record.fields.l1_normalisee,
-            record.fields.l4_normalisee,
-            record.fields.codpos,
-            record.fields.libcom,
-            record.fields.categorie,
-            record.fields.libapen,
-            record.fields.libtefet,
-            record.fields.dcret,
-            record.fields.coordonnees,
-          ));
-        });
+    this.checkConnection();
 
-        this.dispatchEvents();
-      }
-    );
+    if(this.isConnect) {
+      this.customLoader();
+      return this.http.get(this.url, {
+        params: {
+          dataset: RetrieveCompaniesService.DATASET,
+          lang: RetrieveCompaniesService.LANG,
+          rows: this.rows.toString(),
+          facet: this.facets,
+          start: this.start.toString(),
+          q: this.query.queryBuilder(this.filters),
+        },
+      }).map(
+        (res) => res as ApiInterface).subscribe(
+        (response: ApiInterface) => {
+          this.nhits = response.nhits;
+          this.facetGroups = response.facet_groups;
+          response.records.forEach((record: CompanyInterface) => {
+            this.companies.push(new Company(
+              record.fields.siren,
+              record.fields.l1_normalisee,
+              record.fields.l4_normalisee,
+              record.fields.codpos,
+              record.fields.libcom,
+              record.fields.categorie,
+              record.fields.libapen,
+              record.fields.libtefet,
+              record.fields.dcret,
+              record.fields.coordonnees,
+            ));
+          });
+
+          this.dispatchEvents();
+        }
+      );
+    }
+    else{
+      this.cantConnect();
+    }
+
+
   }
 
   reloadCompanies(reload = false) {
@@ -125,5 +136,18 @@ export class RetrieveCompaniesService {
     }
 
     return this.getCompanies();
+  }
+  checkConnection(): void {
+    this.network.onDisconnect().subscribe(
+      () => this.isConnect = false,
+    )
+  }
+  cantConnect():void  {
+    let alert = this.alertCrtl.create({
+        title: 'Pas de connexion !',
+        subTitle: 'Impossible de se connecter à l\'application. Vérifiez l\'état de vos connexion.',
+        enableBackdropDismiss: false,
+    });
+    alert.present();
   }
 }
